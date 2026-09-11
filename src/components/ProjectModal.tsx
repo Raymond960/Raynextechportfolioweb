@@ -68,7 +68,7 @@ export default function ProjectModal({ project, imageSrc, onClose }: ProjectModa
                 <img
                   src={imageSrc}
                   alt={`${project.title} Screenshot - Raynex Tech`}
-                  loading="eager"
+                  loading="lazy"
                   decoding="async"
                   className="max-h-[50dvh] sm:max-h-[60vh] w-auto max-w-full object-contain mx-auto"
                   referrerPolicy="no-referrer"

@@ -10,10 +10,10 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     defaultImage: '/IMG-20260911-WA0010.jpg',
     fallbackCandidates: [
       '/IMG-20260911-WA0010.jpg',
+      '/images/IMG-20260911-WA0010.jpg',
       '/public/IMG-20260911-WA0010.jpg',
+      '/public/images/IMG-20260911-WA0010.jpg',
       '/assets/IMG-20260911-WA0010.jpg',
-      '/arimz-store-hub-admin.jpg',
-      '/project-01.jpg',
     ],
     tags: ['Gemini 3.7 Flash', 'Retail Analytics', 'Live Operations', 'Inventory Velocity'],
     highlights: [
@@ -31,10 +31,10 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     defaultImage: '/IMG-20260911-WA0009.jpg',
     fallbackCandidates: [
       '/IMG-20260911-WA0009.jpg',
+      '/images/IMG-20260911-WA0009.jpg',
       '/public/IMG-20260911-WA0009.jpg',
+      '/public/images/IMG-20260911-WA0009.jpg',
       '/assets/IMG-20260911-WA0009.jpg',
-      '/shendam-connect.jpg',
-      '/project-02.jpg',
     ],
     tags: ['Local Tourism', 'Plateau State', 'Verified Directory', 'Mobile First'],
     highlights: [
@@ -52,10 +52,10 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     defaultImage: '/IMG-20260911-WA0011.jpg',
     fallbackCandidates: [
       '/IMG-20260911-WA0011.jpg',
+      '/images/IMG-20260911-WA0011.jpg',
       '/public/IMG-20260911-WA0011.jpg',
+      '/public/images/IMG-20260911-WA0011.jpg',
       '/assets/IMG-20260911-WA0011.jpg',
-      '/arimz-store-hub.jpg',
-      '/project-03.jpg',
     ],
     tags: ['E-Commerce', 'AI Prompts', 'Paystack & Stripe', 'Community Hub'],
     highlights: [
@@ -73,10 +73,10 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     defaultImage: '/IMG-20260911-WA0007.jpg',
     fallbackCandidates: [
       '/IMG-20260911-WA0007.jpg',
+      '/images/IMG-20260911-WA0007.jpg',
       '/public/IMG-20260911-WA0007.jpg',
+      '/public/images/IMG-20260911-WA0007.jpg',
       '/assets/IMG-20260911-WA0007.jpg',
-      '/aegis-security-suite.jpg',
-      '/project-04.jpg',
     ],
     tags: ['Kernel Integrity', 'Boot Chain Simulator', 'PAC / PPL', 'Security Telemetry'],
     highlights: [
@@ -94,10 +94,10 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     defaultImage: '/IMG-20260911-WA0008.jpg',
     fallbackCandidates: [
       '/IMG-20260911-WA0008.jpg',
+      '/images/IMG-20260911-WA0008.jpg',
       '/public/IMG-20260911-WA0008.jpg',
+      '/public/images/IMG-20260911-WA0008.jpg',
       '/assets/IMG-20260911-WA0008.jpg',
-      '/shendam-local-government.jpg',
-      '/project-05.jpg',
     ],
     tags: ['Civic Portal', 'Public Services', 'Plateau State', 'Transparent Governance'],
     highlights: [
@@ -115,11 +115,10 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     defaultImage: '/IMG-20260911-WA0012.jpg',
     fallbackCandidates: [
       '/IMG-20260911-WA0012.jpg',
+      '/images/IMG-20260911-WA0012.jpg',
       '/public/IMG-20260911-WA0012.jpg',
+      '/public/images/IMG-20260911-WA0012.jpg',
       '/assets/IMG-20260911-WA0012.jpg',
-      '/hearth-and-bean.jpg',
-      '/hearth_and_bean.jpg',
-      '/project-06.jpg',
     ],
     tags: ['Brand Experience', 'Artisan Coffee', 'Online Reservations', 'Micro-Interactions'],
     highlights: [
