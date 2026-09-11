@@ -9,6 +9,8 @@ export default function Contact() {
     message: '',
   });
   const [submittedStatus, setSubmittedStatus] = useState<'idle' | 'drafted'>('idle');
+  const [isWhatsAppTapped, setIsWhatsAppTapped] = useState(false);
+  const [isCardTapped, setIsCardTapped] = useState(false);
 
   const [formError, setFormError] = useState<string | null>(null);
 
@@ -18,6 +20,26 @@ export default function Contact() {
   const defaultWhatsAppText = encodeURIComponent(
     "Hello Raynex Tech, I'd like to discuss an AI website/tool project with you."
   );
+
+  const handleWhatsAppTap = () => {
+    setIsWhatsAppTapped(true);
+    setTimeout(() => {
+      window.open(`https://wa.me/${whatsappNumber}?text=${defaultWhatsAppText}`, '_blank', 'noopener,noreferrer');
+    }, 150);
+    setTimeout(() => {
+      setIsWhatsAppTapped(false);
+    }, 4000);
+  };
+
+  const handleCardTap = () => {
+    setIsCardTapped(true);
+    setTimeout(() => {
+      window.open(`https://wa.me/${whatsappNumber}?text=${defaultWhatsAppText}`, '_blank', 'noopener,noreferrer');
+    }, 150);
+    setTimeout(() => {
+      setIsCardTapped(false);
+    }, 4000);
+  };
 
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -88,24 +110,36 @@ export default function Contact() {
                 </a>
 
                 {/* WhatsApp */}
-                <a
-                  href={`https://wa.me/${whatsappNumber}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-200 shadow-2xs hover:border-emerald-300 transition-colors group"
+                <button
+                  type="button"
+                  onClick={handleCardTap}
+                  className={`w-full text-left flex items-center gap-4 p-4 rounded-xl border transition-all cursor-pointer ${
+                    isCardTapped
+                      ? 'bg-emerald-50 border-emerald-400 shadow-sm scale-[0.99]'
+                      : 'bg-white border-slate-200 shadow-2xs hover:border-emerald-300'
+                  }`}
                 >
-                  <div className="w-11 h-11 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
-                    <Phone className="w-5 h-5" />
+                  <div className={`w-11 h-11 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                    isCardTapped ? 'bg-emerald-600 text-white' : 'bg-emerald-50 text-emerald-600'
+                  }`}>
+                    {isCardTapped ? <CheckCircle2 className="w-5 h-5 animate-scale" /> : <Phone className="w-5 h-5" />}
                   </div>
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <span className="text-[11px] font-bold text-[#64748B] uppercase tracking-wider block">
-                      WhatsApp
+                      {isCardTapped ? 'Tapped • Connecting...' : 'WhatsApp'}
                     </span>
-                    <span className="text-sm font-bold text-[#0A2342] group-hover:text-emerald-600 transition-colors">
+                    <span className={`text-sm font-bold transition-colors ${
+                      isCardTapped ? 'text-emerald-700' : 'text-[#0A2342] hover:text-emerald-600'
+                    }`}>
                       +234 806 058 1539
                     </span>
                   </div>
-                </a>
+                  {isCardTapped && (
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 shrink-0">
+                      Opening
+                    </span>
+                  )}
+                </button>
 
                 {/* Location */}
                 <div className="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-200 shadow-2xs">
@@ -135,16 +169,28 @@ export default function Contact() {
               <p className="text-xs text-[#64748B] mb-4">
                 Chat directly on WhatsApp for quick inquiries, scope estimates, and timeline consultations.
               </p>
-              <a
-                href={`https://wa.me/${whatsappNumber}?text=${defaultWhatsAppText}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={handleWhatsAppTap}
                 id="chat-whatsapp-btn"
-                className="w-full min-h-[48px] inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-bold text-white bg-[#FF6B35] hover:bg-[#E85A24] active:scale-98 shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer text-sm sm:text-base text-center"
+                className={`w-full min-h-[48px] inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-bold text-white shadow-xs transition-all duration-300 ease-out cursor-pointer text-sm sm:text-base text-center transform ${
+                  isWhatsAppTapped
+                    ? 'bg-emerald-600 scale-[0.98] shadow-inner'
+                    : 'bg-[#FF6B35] hover:bg-[#E85A24] hover:scale-[1.02] hover:shadow-lg hover:shadow-orange-500/25 active:scale-[0.98]'
+                }`}
               >
-                <MessageSquare className="w-5 h-5" />
-                <span>Chat on WhatsApp</span>
-              </a>
+                {isWhatsAppTapped ? (
+                  <>
+                    <CheckCircle2 className="w-5 h-5 animate-scale text-white" />
+                    <span>Tapped • Opening WhatsApp...</span>
+                  </>
+                ) : (
+                  <>
+                    <MessageSquare className="w-5 h-5" />
+                    <span>Chat on WhatsApp</span>
+                  </>
+                )}
+              </button>
             </div>
           </div>
 
