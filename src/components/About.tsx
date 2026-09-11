@@ -1,5 +1,4 @@
 import { MapPin, Wrench, Target, Award, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
-import ProfilePhotoFrame from './ProfilePhotoFrame';
 
 export default function About() {
   return (
@@ -22,13 +21,20 @@ export default function About() {
         {/* Profile & Founder Spotlight Card */}
         <div className="max-w-5xl mx-auto mb-12 bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Profile Photo Frame */}
+            {/* Left Photo Container */}
             <div className="md:col-span-5 lg:col-span-4 flex justify-center">
-              <ProfilePhotoFrame
-                variant="about"
-                sizeClass="w-52 h-52 sm:w-60 sm:h-60"
-                showStatusBadge={false}
-              />
+              <div className="w-52 h-64 sm:w-60 sm:h-72 rounded-3xl overflow-hidden border-2 border-blue-100 shadow-xl shadow-slate-200/60 ring-4 ring-slate-100/80 bg-slate-50 flex items-center justify-center p-2">
+                <img
+                  src="/images/profile.jpg"
+                  alt="Raymond Domnan - Founder & Lead Developer"
+                  width="400"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-contain object-center transition-transform duration-500 ease-out hover:scale-[1.02]"
+                />
+              </div>
             </div>
 
             {/* Right Biographical Details */}

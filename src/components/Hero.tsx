@@ -1,5 +1,5 @@
 import { ArrowRight, Cpu, Sparkles, Layers, Zap } from 'lucide-react';
-import ProfilePhotoFrame from './ProfilePhotoFrame';
+import HeroLogoFrame from './HeroLogoFrame';
 
 export default function Hero() {
   const scrollTo = (selector: string) => {
@@ -98,17 +98,15 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Existing Uploaded Personal Photo (Clean Standalone Visual) */}
+          {/* Right Column: Official Raynex Tech Logo (Clean High-Contrast Visual) */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <div
-              id="hero-photo-visual"
+              id="hero-logo-visual"
               className="relative flex justify-center items-center"
             >
-              {/* Profile Photo Frame with existing uploaded personal photo */}
-              <ProfilePhotoFrame
-                variant="hero"
+              {/* Official Raynex Tech Logo Frame */}
+              <HeroLogoFrame
                 sizeClass="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[340px] lg:h-[340px] xl:w-[370px] xl:h-[370px]"
-                showStatusBadge={false}
               />
             </div>
           </div>
