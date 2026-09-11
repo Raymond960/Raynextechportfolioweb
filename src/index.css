@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg-white: #FFFFFF;
+    --color-bg-light: #F7F9FC;
+    --color-bg-subtle-blue: #F3F8FF;
+    --color-navy: #0A2342;
+    --color-orange: #FF6B35;
+    --color-orange-hover: #E85A24;
+    --color-blue: #2563EB;
+    --color-blue-hover: #1D4ED8;
+    --color-border: #E2E8F0;
+    --color-border-light: #F1F5F9;
+    --color-text-muted: #475569;
+    --color-text-subtle: #64748B;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--color-navy);
+    background-color: var(--color-bg-white);
+    max-width: 100vw;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    max-width: 100vw;
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    color: #0A2342;
+    background-color: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-overflow-scrolling: touch;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Prevent automatic iOS Safari zoom on input focus */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+  @media (min-width: 640px) {
+    input, select, textarea {
+      font-size: 0.875rem !important; /* 14px */
+    }
+  }
+
+  /* Responsive image & media defaults */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Fast responsive tap on mobile touchscreens */
+  a, button, input, select, textarea {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* Accessible focus indicators across Chrome, Safari, Edge, Firefox */
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid #2563EB;
+    outline-offset: 2px;
+  }
+
+  /* Section anchor scroll offset for sticky navbar */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  /* Accessibility: respect user reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto !important;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  ::selection {
+    background-color: #FF6B35;
+    color: #FFFFFF;
+  }
+}
+
+/* Diagonal watermark styling - responsive fluid scaling */
+.portfolio-watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.portfolio-watermark-text {
+  transform: rotate(-24deg);
+  white-space: nowrap;
+  font-size: clamp(10px, 2.2vw, 15px);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.76);
+  text-shadow: 0 1px 4px rgba(10, 35, 66, 0.45), 0 0 10px rgba(0, 0, 0, 0.3);
+  user-select: none;
+  pointer-events: none;
+}
