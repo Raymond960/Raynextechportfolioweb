@@ -25,7 +25,7 @@ export default function About() {
             <div className="md:col-span-5 lg:col-span-4 flex justify-center">
               <div className="w-52 h-64 sm:w-60 sm:h-72 rounded-3xl overflow-hidden border-2 border-blue-100 shadow-xl shadow-slate-200/60 ring-4 ring-slate-100/80 bg-slate-50 flex items-center justify-center p-2">
                 <img
-                  src="/images/profile.jpg"
+                  src="/images/file_00000000be60820e9e766a9f42e0bd04.png"
                   alt="Raymond Domnan - Founder & Lead Developer"
                   width="400"
                   height="400"

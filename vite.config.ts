@@ -12,16 +12,19 @@ function staticImageServePlugin(): Plugin {
         const rawUrl = req.url?.split('?')[0] || '';
         const ext = path.extname(rawUrl).toLowerCase();
         if (['.jpg', '.jpeg', '.png', '.webp', '.svg', '.gif'].includes(ext)) {
+          const cleanPath = rawUrl.replace(/^\//, '');
           const filename = path.basename(rawUrl);
           const candidatePaths = [
-            path.resolve(__dirname, filename),
+            path.resolve(__dirname, 'public', cleanPath),
+            path.resolve(__dirname, 'public', 'images', filename),
             path.resolve(__dirname, 'public', filename),
             path.resolve(__dirname, 'public', 'assets', filename),
             path.resolve(__dirname, 'src', 'assets', filename),
+            path.resolve(__dirname, filename),
           ];
 
           for (const filePath of candidatePaths) {
-            if (fs.existsSync(filePath)) {
+            if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
               const mimeMap: Record<string, string> = {
                 '.jpg': 'image/jpeg',
                 '.jpeg': 'image/jpeg',
@@ -36,10 +39,6 @@ function staticImageServePlugin(): Plugin {
               return;
             }
           }
-          res.statusCode = 404;
-          res.setHeader('Content-Type', 'text/plain');
-          res.end('Image not found');
-          return;
         }
         next();
       });

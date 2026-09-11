@@ -1,11 +1,9 @@
-import { useState, useEffect, useRef, ChangeEvent } from 'react';
-import { ShieldCheck, Award, CheckCircle2, FileCheck, Upload, ExternalLink, Calendar, BookOpen } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ShieldCheck, CheckCircle2, Calendar, BookOpen } from 'lucide-react';
 import { CERTIFICATION_DATA } from '../data/portfolioData';
-import { optimizeImage } from '../utils/imageOptimizer';
 
 export default function Certification() {
-  const [certImage, setCertImage] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [certImage, setCertImage] = useState<string | null>('/certificate.jpg');
 
   useEffect(() => {
     const savedCert = localStorage.getItem('raynex_cert_image');
@@ -13,43 +11,10 @@ export default function Certification() {
       setCertImage(savedCert);
       return;
     }
-    // Check if certificate image exists on server
     const img = new Image();
     img.src = '/certificate.jpg';
     img.onload = () => setCertImage('/certificate.jpg');
   }, []);
-
-  const handleUploadCert = async (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      try {
-        const compressed = await optimizeImage(file, {
-          maxWidth: 1200,
-          maxHeight: 900,
-          quality: 0.88,
-          format: 'image/webp',
-        });
-        setCertImage(compressed);
-        try {
-          localStorage.setItem('raynex_cert_image', compressed);
-        } catch (err) {
-          console.warn('LocalStorage quota exceeded', err);
-        }
-      } catch {
-        const reader = new FileReader();
-        reader.onload = () => {
-          const result = reader.result as string;
-          setCertImage(result);
-          try {
-            localStorage.setItem('raynex_cert_image', result);
-          } catch (err) {
-            console.warn('LocalStorage quota exceeded', err);
-          }
-        };
-        reader.readAsDataURL(file);
-      }
-    }
-  };
 
   return (
     <section id="certificate" className="py-20 bg-[#F7F9FC] border-t border-slate-200/80">
@@ -68,21 +33,12 @@ export default function Certification() {
           </p>
         </div>
 
-        {/* Hidden File Input for Certificate Upload */}
-        <input
-          type="file"
-          ref={fileInputRef}
-          onChange={handleUploadCert}
-          accept="image/*"
-          className="hidden"
-        />
-
         {/* Main Certification Card */}
         <div className="max-w-4xl mx-auto">
           {certImage ? (
-            /* If an actual certificate image was uploaded, display it prominently */
+            /* Official certificate image display */
             <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 mb-8 text-center">
-              <div className="relative rounded-xl overflow-hidden border border-slate-200 bg-[#F7F9FC] max-w-2xl mx-auto mb-4">
+              <div className="relative rounded-xl overflow-hidden border border-slate-200 bg-[#F7F9FC] max-w-2xl mx-auto mb-3">
                 <img
                   src={certImage}
                   alt="ISO/IEC 42001:2023 Certificate - Alison"
@@ -94,15 +50,9 @@ export default function Certification() {
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <p className="text-xs text-[#64748B] mb-2">
-                Uploaded Official Certificate — ISO/IEC 42001:2023
+              <p className="text-xs text-[#64748B] font-medium">
+                Official Credential: ISO/IEC 42001:2023 Artificial Intelligence Management Systems
               </p>
-              <button
-                onClick={() => fileInputRef.current?.click()}
-                className="text-xs text-[#2563EB] hover:underline font-semibold"
-              >
-                Change Certificate Image
-              </button>
             </div>
           ) : (
             /* Beautiful Text-Based Certification Card */
@@ -171,15 +121,6 @@ export default function Certification() {
                     <span>Year: 2024 / Valid</span>
                   </div>
                 </div>
-
-                {/* Optional Upload Action */}
-                <button
-                  onClick={() => fileInputRef.current?.click()}
-                  className="min-h-[40px] inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 active:scale-98 text-xs font-semibold text-[#0A2342] transition-all cursor-pointer"
-                >
-                  <Upload className="w-3.5 h-3.5 text-[#2563EB]" />
-                  <span>Attach Certificate Image</span>
-                </button>
               </div>
             </div>
           )}
