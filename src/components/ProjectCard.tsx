@@ -16,10 +16,10 @@ export default function ProjectCard({ project, onOpenModal }: ProjectCardProps) 
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Check localStorage or initial candidates
+  // Check localStorage for custom user uploads, otherwise use defaultImage
   useEffect(() => {
     const saved = localStorage.getItem(`raynex_project_img_${project.id}`);
-    if (saved) {
+    if (saved && saved.startsWith('data:image/')) {
       setActiveImage(saved);
       return;
     }
